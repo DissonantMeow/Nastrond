@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Náströnd — a private EverQuest II realm</title>
+<meta name="description" content="A small, private, invite-only EverQuest II realm running the Desert of Flames era client.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="masthead-name" href="index.html">Náströnd</a>
+
+  <span class="status is-compact" data-status-badge data-state="unknown">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span class="status-label" data-status-label>Status unavailable</span>
+  </span>
+
+  <nav class="masthead-nav" aria-label="Main">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="install.html">Install</a>
+    <a href="faq.html">Help</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="wordmark">Náströnd</h1>
+
+    <p class="lede">A small, private EverQuest II realm, running the game as it
+    was in 2005. Built for a handful of friends and nobody else.</p>
+
+    <div>
+      <span class="status" data-status-badge data-state="unknown">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-label" data-status-label>Status unavailable</span>
+      </span>
+      <span class="status-note" data-status-note></span>
+    </div>
+
+    <p style="margin-top:2rem">
+      <a class="btn btn-primary" href="install.html">Get the launcher</a>
+    </p>
+  </div>
+</section>
+
+<main>
+<div class="wrap">
+
+  <section class="section">
+    <h2>What this is</h2>
+
+    <p>Náströnd is the shore of corpses in Hel, where the dead wash up. It is
+    also a private server running the Desert of Flames era of EverQuest II —
+    the game as it existed roughly twenty years ago, before the expansions
+    stacked up and the world got quietly rebuilt around them.</p>
+
+    <p>You do not need an original account, a subscription, or anything you
+    once owned. The launcher downloads the client, points it here, and starts
+    it. There is no store, no donation link, and no way to spend money on this;
+    it is one machine in a house, run for people who already know each other.</p>
+  </section>
+
+  <section class="section">
+    <h2>The realm</h2>
+
+    <table class="facts">
+      <tbody>
+        <tr>
+          <th scope="row">Era</th>
+          <td>Desert of Flames (2005)</td>
+        </tr>
+        <tr>
+          <th scope="row">Address</th>
+          <td>Set for you by the launcher — there is nothing to type in.</td>
+        </tr>
+        <tr>
+          <th scope="row">Who can play</th>
+          <td>Invite only. If you are reading this, you are invited.</td>
+        </tr>
+        <tr>
+          <th scope="row">Population</th>
+          <td>A handful of people. Expect to know everyone online.</td>
+        </tr>
+        <tr>
+          <th scope="row">Progression</th>
+          <td>Curated and capped, with some things changed from the original.
+          Details are still being settled and will be announced in game.</td>
+        </tr>
+        <tr>
+          <th scope="row">Character wipes</th>
+          <td>Possible while things are still being built. You will get warning
+          first.</td>
+        </tr>
+        <tr>
+          <th scope="row">Cost</th>
+          <td>None, ever.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>News</h2>
+
+    <ul class="news-list" id="news">
+      <li class="news-item">
+        <p class="news-body">The realm is up and the launcher works on Windows
+        and Linux. Grab it from the install page and shout if anything breaks.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Something not working?</h2>
+
+    <p>If the server list appears but character select hangs, the realm is down
+    rather than broken — check the badge at the top of this page. Everything
+    else worth knowing is on the help page.</p>
+
+    <p><a class="btn" href="faq.html">Read the help page</a></p>
+  </section>
+
+</div>
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <p>Náströnd is a private, non-commercial server run for a small group of
+    friends. It is not affiliated with, endorsed by, or connected to Daybreak
+    Game Company, Sony Online Entertainment, or any other studio. EverQuest II
+    and all related marks belong to their respective owners.</p>
+    <p><a href="index.html">Home</a> &nbsp; <a href="install.html">Install</a> &nbsp; <a href="faq.html">Help</a></p>
+  </div>
+</footer>
+
+<script src="status.js"></script>
+<script>
+/* News feed — reads the same JSON shape the launcher's feedUrl consumes:
+   an array of { date, title, body, url }. Serving one file to both means a
+   single edit updates the launcher and the website together.
+   Fails soft: if the fetch fails, the static message already in the markup
+   above simply stays put. */
+(function () {
+  "use strict";
+
+  fetch("news.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function (items) {
+      if (!Array.isArray(items) || items.length === 0) return;
+
+      var list = document.getElementById("news");
+      var frag = document.createDocumentFragment();
+
+      items.slice(0, 5).forEach(function (item) {
+        if (!item || !item.title) return;
+
+        var li = document.createElement("li");
+        li.className = "news-item";
+
+        if (item.date) {
+          var d = document.createElement("span");
+          d.className = "news-date";
+          var parsed = new Date(item.date);
+          d.textContent = isNaN(parsed.getTime())
+            ? String(item.date)
+            : parsed.toLocaleDateString(undefined,
+                { year: "numeric", month: "long", day: "numeric" });
+          li.appendChild(d);
+        }
+
+        var h = document.createElement("h3");
+        h.className = "news-title";
+        h.textContent = item.title;
+        li.appendChild(h);
+
+        if (item.body) {
+          var p = document.createElement("p");
+          p.className = "news-body";
+          p.textContent = item.body;
+          li.appendChild(p);
+        }
+
+        if (item.url) {
+          var wrap = document.createElement("p");
+          wrap.className = "news-body";
+          var a = document.createElement("a");
+          a.href = item.url;
+          a.textContent = "Read more";
+          a.rel = "noopener";
+          wrap.appendChild(a);
+          li.appendChild(wrap);
+        }
+
+        frag.appendChild(li);
+      });
+
+      if (frag.childNodes.length) {
+        list.textContent = "";
+        list.appendChild(frag);
+      }
+    })
+    .catch(function () { /* keep the shipped message */ });
+})();
+</script>
+
+</body>
+</html>

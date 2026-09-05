@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install — Náströnd</title>
+<meta name="description" content="Download the Náströnd launcher and get into the realm.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="masthead-name" href="index.html">Náströnd</a>
+
+  <span class="status is-compact" data-status-badge data-state="unknown">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span class="status-label" data-status-label>Status unavailable</span>
+  </span>
+
+  <nav class="masthead-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="install.html" aria-current="page">Install</a>
+    <a href="faq.html">Help</a>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section class="section">
+    <h2>Install</h2>
+
+    <p class="lede">The launcher does everything: it downloads the game, sets it
+    up, points it at the realm and starts it. You will not have to edit a
+    config file or type an address anywhere.</p>
+
+    <p>Set aside about <strong>20&nbsp;GB of free disk space</strong> and an
+    evening for the first run. After that it starts in seconds.</p>
+
+    <div class="platform-switch" role="tablist" aria-label="Choose your platform">
+      <button type="button" role="tab" id="tab-win"   aria-controls="panel-win"   aria-selected="true">Windows</button>
+      <button type="button" role="tab" id="tab-linux" aria-controls="panel-linux" aria-selected="false">Linux</button>
+    </div>
+
+    <!-- ================= WINDOWS ================= -->
+    <div class="panel" id="panel-win" role="tabpanel" aria-labelledby="tab-win" tabindex="0">
+
+      <div class="download-card">
+        <!-- TODO: replace href, size and hash before sharing this page.
+             The file is too large for GitHub Pages (100 MB cap), so host the
+             binary on a GitHub Release and link to it here. -->
+        <a class="btn btn-primary" href="https://github.com/DissonantMeow/Everquest-2-Nastrond-Windows/releases/latest/download/EQ2Launcher.exe" download>Download for Windows</a>
+        <p class="hash">EQ2Launcher.exe &middot; version 0.0.0 &middot; 00&nbsp;MB<br>
+        SHA-256 21d697efe116ca013078f3bd7448f83d5892ed69167eee8bb00ffe364c696380</p>
+      </div>
+
+      <ol class="steps">
+        <li><strong>Run the file you downloaded.</strong> Nothing installs — the
+        launcher is a single file and runs from wherever you put it. Somewhere
+        you will find it again is better than your downloads folder.</li>
+
+        <li><strong>Windows will warn you about an unknown publisher.</strong>
+        This is expected. The launcher is not code-signed, because a signing
+        certificate costs several hundred dollars a year and this is a server
+        for six people. Click <kbd>More info</kbd>, then <kbd>Run anyway</kbd>.
+        Your antivirus may also quarantine it for the same reason.</li>
+
+        <li><strong>Press PLAY.</strong> The game is delivered as 53 separate
+        archive parts, so this stage takes a long time and the progress bar
+        will sit on the same number for a while. It has not frozen. Leave it
+        alone until it says <em>Ready to play</em>.</li>
+
+        <li><strong>Press PLAY again.</strong> The first press installs and
+        stops. The second press launches the game. This is deliberate, so a
+        long download does not dump you straight into a login screen hours
+        later.</li>
+
+        <li><strong>Make an account at the login screen.</strong> Type the
+        username and password you want and log in — the account is created the
+        first time you use it. There is no email, no confirmation, and no
+        recovery, so pick something you will remember.</li>
+      </ol>
+
+      <div class="note">
+        <p><strong>If extraction fails</strong> with "cannot open the file as
+        archive", you have an old build of the launcher. Download it again from
+        this page and delete the old copy.</p>
+      </div>
+    </div>
+
+    <!-- ================= LINUX ================= -->
+    <div class="panel" id="panel-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0" hidden>
+
+      <div class="download-card">
+        <!-- TODO: replace href, size and hash before sharing this page. -->
+        <a class="btn btn-primary" href="https://github.com/DissonantMeow/Everquest-2-Nastrond-Linux/releases/latest/download/Nastrond-Launcher.AppImage" download>Download for Linux</a>
+        <p class="hash">Nastrond-Launcher.AppImage &middot; version 0.0.0 &middot; 00&nbsp;MB<br>
+        SHA-256 289c3146c12c96482370de0b4bfa1f383ca71bd05ae62f5bd625c4faa106c465</p>
+      </div>
+
+      <ol class="steps">
+        <li><strong>Make it executable.</strong> Either tick the box in your
+        file manager's properties dialogue, or run
+        <code>chmod +x Nastrond-Launcher.AppImage</code>.</li>
+
+        <li><strong>Run it.</strong> The game itself is a Windows program and
+        runs through Proton, which the launcher handles for you. The first
+        launch builds a Wine prefix, so give it a moment longer than you
+        expect.</li>
+
+        <li><strong>Press PLAY.</strong> The game arrives as 53 archive parts.
+        This is the slow bit — the progress bar will look stuck and is not.
+        Wait for <em>Ready to play</em>.</li>
+
+        <li><strong>Press PLAY again.</strong> The first press installs and
+        stops; the second one starts the game.</li>
+
+        <li><strong>Make an account at the login screen.</strong> Whatever
+        username and password you type the first time becomes your account.
+        There is no email and no password recovery.</li>
+      </ol>
+
+      <div class="note">
+        <p><strong>The game window will show a generic Wine icon</strong> in
+        your taskbar. Cosmetic, and fixable with a desktop entry — ask and I
+        will send you one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>After the first launch</h2>
+
+    <p>The launcher checks for updated artwork and settings every time you
+    press PLAY, so the realm can be repainted without sending you a new build.
+    If the server is unreachable it skips the check and starts the game anyway
+    — a download problem should never stop you playing.</p>
+
+    <p>One thing worth doing early: if you rebind your keys, open
+    <kbd>Options</kbd> &rarr; <kbd>Controls</kbd> and press <kbd>Accept</kbd>
+    before you quit. The 2005 client only writes bindings to disk at that
+    moment, and anything you change without it is forgotten when you log out.</p>
+  </section>
+
+</div>
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <p>Náströnd is a private, non-commercial server run for a small group of
+    friends. It is not affiliated with, endorsed by, or connected to Daybreak
+    Game Company, Sony Online Entertainment, or any other studio. EverQuest II
+    and all related marks belong to their respective owners.</p>
+    <p><a href="index.html">Home</a> &nbsp; <a href="install.html">Install</a> &nbsp; <a href="faq.html">Help</a></p>
+  </div>
+</footer>
+
+<script src="status.js"></script>
+<script>
+/* Platform tabs. Defaults to whatever the browser reports, but both panels are
+   always one click away — someone downloading on their phone to move the file
+   across later must not be locked out of the other set of steps. */
+(function () {
+  "use strict";
+
+  var tabs = [
+    { tab: document.getElementById("tab-win"),   panel: document.getElementById("panel-win") },
+    { tab: document.getElementById("tab-linux"), panel: document.getElementById("panel-linux") }
+  ];
+
+  function select(index) {
+    tabs.forEach(function (t, i) {
+      var on = i === index;
+      t.tab.setAttribute("aria-selected", on ? "true" : "false");
+      t.panel.hidden = !on;
+    });
+  }
+
+  tabs.forEach(function (t, i) {
+    t.tab.addEventListener("click", function () { select(i); });
+
+    t.tab.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault();
+      var next = (i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+      select(next);
+      tabs[next].tab.focus();
+    });
+  });
+
+  var ua = navigator.userAgent;
+  if (/Linux/i.test(ua) && !/Android/i.test(ua)) select(1);
+})();
+</script>
+
+</body>
+</html>

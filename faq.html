@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help — Náströnd</title>
+<meta name="description" content="Answers to the things that usually go wrong on Náströnd.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="masthead-name" href="index.html">Náströnd</a>
+
+  <span class="status is-compact" data-status-badge data-state="unknown">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span class="status-label" data-status-label>Status unavailable</span>
+  </span>
+
+  <nav class="masthead-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="install.html">Install</a>
+    <a href="faq.html" aria-current="page">Help</a>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section class="section">
+    <h2>Help</h2>
+
+    <p class="lede">Most problems here are one of about six things. Start with
+    the status badge at the top of the page — if the realm is down, nothing
+    below will help.</p>
+
+    <h3>Connecting</h3>
+
+    <details class="faq-item">
+      <summary>The server appears in the list, but character select hangs forever</summary>
+      <div class="faq-answer">
+        <p>The realm is down. This is what "down" looks like from your side: the
+        list still populates, because that comes from a different part of the
+        server than the one that went away.</p>
+        <p>Check the badge at the top of this page. If it says the realm is
+        online and you still cannot get in, that badge is wrong — say so and it
+        will get fixed.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>I forgot my password</summary>
+      <div class="faq-answer">
+        <p>There is no reset, because there are no email addresses attached to
+        anything. Ask and your account can be looked at directly.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do I need to type in a server address?</summary>
+      <div class="faq-answer">
+        <p>No. The launcher writes it for you every time it starts, and updates
+        it if the realm ever moves. If someone gave you an IP address to type
+        in, ignore it — it is probably out of date.</p>
+      </div>
+    </details>
+
+    <h3>Installing</h3>
+
+    <details class="faq-item">
+      <summary>Extraction fails: "cannot open the file as archive"</summary>
+      <div class="faq-answer">
+        <p>An old build of the launcher, which shipped without the ability to
+        read the archive format the game comes in. Download the launcher again
+        from the install page and delete the old copy — nothing else needs
+        redoing.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Windows says the publisher is unknown, or my antivirus quarantined it</summary>
+      <div class="faq-answer">
+        <p>Expected, and not a sign of anything wrong. The launcher is not
+        code-signed, because a certificate costs several hundred dollars a year
+        for a server with six players on it. Unsigned programs that download and
+        unpack other programs trip most heuristics.</p>
+        <p>Click <kbd>More info</kbd> then <kbd>Run anyway</kbd>. If your
+        antivirus removed the file, restore it and add an exclusion.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>The download bar has not moved in ten minutes</summary>
+      <div class="faq-answer">
+        <p>Almost certainly still working. The game comes down in 53 separate
+        parts and the bar only advances as each one finishes, so it sits still
+        for long stretches. Give it an hour before you assume anything is
+        wrong.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>I pressed PLAY and it said "Ready to play" instead of starting</summary>
+      <div class="faq-answer">
+        <p>Working as intended. The first press installs, the second press
+        launches. It is set up this way so a download that finishes at three in
+        the morning does not throw you into a login screen unattended.</p>
+      </div>
+    </details>
+
+    <h3>In game</h3>
+
+    <details class="faq-item">
+      <summary>My keybindings reset every time I log out</summary>
+      <div class="faq-answer">
+        <p>The client only writes bindings to disk when you press
+        <kbd>Accept</kbd> in <kbd>Options</kbd> &rarr; <kbd>Controls</kbd>.
+        Changes made without it apply to the session and are then thrown away.</p>
+        <p>Set your keys, press Accept, quit the game, and they will stick.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>My window layout went back to default</summary>
+      <div class="faq-answer">
+        <p>Usually the result of the realm being renamed, since the client files
+        those layouts under the realm's name and will not find them under the
+        new one. The old layout is still on disk rather than lost. Ask before
+        rebuilding your interface from scratch.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Will my character be wiped?</summary>
+      <div class="faq-answer">
+        <p>Possibly, while the realm is still being built. If it happens you
+        will get warning first, and it will be announced rather than discovered.
+        Do not get too attached to anything just yet.</p>
+      </div>
+    </details>
+
+    <h3>Still stuck</h3>
+
+    <details class="faq-item">
+      <summary>None of this covers my problem</summary>
+      <div class="faq-answer">
+        <p>Say what you were doing, what you expected, and what happened
+        instead. A screenshot of the error beats a description of it. If the
+        launcher failed, the text in its window is the useful part.</p>
+      </div>
+    </details>
+  </section>
+
+</div>
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <p>Náströnd is a private, non-commercial server run for a small group of
+    friends. It is not affiliated with, endorsed by, or connected to Daybreak
+    Game Company, Sony Online Entertainment, or any other studio. EverQuest II
+    and all related marks belong to their respective owners.</p>
+    <p><a href="index.html">Home</a> &nbsp; <a href="install.html">Install</a> &nbsp; <a href="faq.html">Help</a></p>
+  </div>
+</footer>
+
+<script src="status.js"></script>
+</body>
+</html>
