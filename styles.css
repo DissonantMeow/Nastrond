@@ -165,17 +165,34 @@ main { padding: 0 var(--gutter); }
 
 .hero {
   position: relative;
-  padding: clamp(3.5rem, 12vw, 7rem) var(--gutter) clamp(3rem, 9vw, 5rem);
+  min-height: 44rem;
+  display: flex;
+  align-items: flex-start;
+  padding: clamp(4rem, 10vw, 7rem) var(--gutter) clamp(3rem, 9vw, 5rem);
   overflow: hidden;
-  /* Gradient stands in if art/hero-bg.jpg is absent, so a missing file
-     degrades to a usable page rather than a black void. */
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(69, 194, 47, 0.10), transparent 62%),
+    /* Top-weighted scrim: dense where the copy sits, clearing downward so the
+       art reads at full strength in the lower half. */
+    linear-gradient(180deg,
+      rgba(8,11,8,.90) 0%,
+      rgba(8,11,8,.78) 34%,
+      rgba(8,11,8,.30) 62%,
+      rgba(8,11,8,.55) 86%,
+      var(--bg)        100%),
+    url("art/hero-bg.jpg"),
     linear-gradient(180deg, #0b0f0a 0%, var(--bg) 100%);
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid var(--iron);
+  background-size:     cover, cover, cover;
+  background-position: center, center 22%, center;
+  background-repeat:   no-repeat, no-repeat, no-repeat;
 }
+
+.hero .hero-inner { max-width: 46rem; margin: 0 auto; text-align: left; }
+.hero .lede { max-width: 30rem; }
+
+@media (max-width: 60rem) {
+  .hero { min-height: 32rem; }
+}
+
 
 .hero-inner { max-width: 46rem; margin: 0 auto; }
 
@@ -508,3 +525,24 @@ code {
 
 .colophon p { font-size: 0.9375rem; color: var(--ash); line-height: 1.55; }
 .colophon p:last-child { margin-bottom: 0; }
+
+/* --- section watermark ---------------------------------------------------- */
+
+.section--sigil::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20rem;
+  height: 20rem;
+  background: url("art/watermark.png") center / contain no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+.section--sigil > * { position: relative; z-index: 1; }
+
+@media (max-width: 52rem) {
+  .section--sigil::after { display: none; }
+}
